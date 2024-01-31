@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WhatsApp Link Generator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <h2>WhatsApp Link Generator</h2>
-  <form id="waForm">
-    <label for="name">Nama:</label><br>
-    <input type="text" id="name" name="name"><br>
-    <label for="phoneNumber">Nomor Telepon:</label><br>
-    <input type="text" id="phoneNumber" name="phoneNumber"><br>
-    <label for="customMessage">Pesan Kustom:</label><br>
-    <input type="text" id="customMessage" name="customMessage"><br><br>
-    <button type="button" onclick="generateWhatsAppLink()">Generate Link</button>
-  </form>
-  
-  <div id="result"></div>
+  <div class="container">
+    <h2 class="mt-5">WhatsApp Link Generator</h2>
+    <form id="waForm" class="mt-4">
+      <div class="form-group">
+        <label for="name">Nama:</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Nomor Telepon:</label>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+      </div>
+      <div class="form-group">
+        <label for="customMessage">Pesan Kustom:</label>
+        <textarea class="form-control" id="customMessage" name="customMessage" rows="4"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="generateWhatsAppLink()">Generate Link</button>
+    </form>
+    
+    <div id="result" class="mt-4"></div>
+  </div>
 
   <script>
     function generateWhatsAppLink() {
@@ -24,7 +35,7 @@
       var customMessage = document.getElementById('customMessage').value;
       
       var whatsappLink = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(customMessage);
-      document.getElementById('result').innerText = whatsappLink;
+      document.getElementById('result').innerHTML = '<strong>WhatsApp Link:</strong><br><a href="' + whatsappLink + '" target="_blank">' + whatsappLink + '</a>';
     }
   </script>
 </body>
