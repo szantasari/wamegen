@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp Link Generator</title>
+</head>
+<body>
+  <h2>WhatsApp Link Generator</h2>
+  <form id="waForm">
+    <label for="name">Nama:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="phoneNumber">Nomor Telepon:</label><br>
+    <input type="text" id="phoneNumber" name="phoneNumber"><br>
+    <label for="customMessage">Pesan Kustom:</label><br>
+    <input type="text" id="customMessage" name="customMessage"><br><br>
+    <button type="button" onclick="generateWhatsAppLink()">Generate Link</button>
+  </form>
+  
+  <div id="result"></div>
+
+  <script>
+    function generateWhatsAppLink() {
+      var name = document.getElementById('name').value;
+      var phoneNumber = document.getElementById('phoneNumber').value;
+      var customMessage = document.getElementById('customMessage').value;
+      
+      var whatsappLink = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(customMessage);
+      document.getElementById('result').innerText = whatsappLink;
+    }
+  </script>
+</body>
+</html>
